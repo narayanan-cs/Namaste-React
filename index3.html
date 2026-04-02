@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +8,11 @@
 </head>
 <body>
     <div id="root"></div>
-<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-<script>
+<!--<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>-->
+<script type="module">
+import React from "React";
+import ReactDOM from "React-DOM/client";
 const heading= React.createElement("h1",{},"Hello World from React");
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(heading);

@@ -2,13 +2,19 @@
   "name": "learning-react",
   "version": "1.0.0",
   "description": "learning react",
-  "main": "index.js",
   "scripts": {
     "test": "npm test"
   },
   "author": "Narayanan Chandrasekar",
   "license": "ISC",
   "dependencies": {
-    "parcel": "^2.16.4"
-  }
+    "parcel": "^2.16.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "not dead",
+    "> 0.2%"
+  ]
 }
