@@ -1,0 +1,14 @@
+{
+  "name": "learning-react",
+  "version": "1.0.0",
+  "description": "learning react",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Narayanan Chandrasekar",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^2.16.4"
+  }
+}
