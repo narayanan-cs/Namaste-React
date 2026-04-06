@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root">
+        <h1>Hello World</h1>
+    </div>
+       <script type="module">
+        import React from "React";
+        import ReactDOM from "React-DOM/client";
+        
+        const heading= (<div>
+            <h1>Namaste React using JSX</h1>
+            </div>
+        )
+        root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(heading); 
+    </script>
+</body>
+</html>

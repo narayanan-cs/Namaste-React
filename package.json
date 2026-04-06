@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "description": "learning react",
   "scripts": {
-    "test": "npm test"
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
   },
   "author": "Narayanan Chandrasekar",
   "license": "ISC",
   "dependencies": {
     "parcel": "^2.16.4",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.3"
   },
   "browserslist": [
     "last 2 versions",
