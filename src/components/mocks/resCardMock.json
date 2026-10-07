@@ -1,0 +1,18 @@
+{"resData": 
+    {
+    "info": {
+        "cloudinaryImageId": "test-image-id",
+        "avgRatingString": "4.5",
+        
+        "sla": {
+            "slaString": 20
+        },
+        "id": "1",
+        "name": "Test Restaurant",
+        "cuisines": ["Italian", "Pizza"],
+        "avgRating": 4.5,
+        "costForTwo": "$10-20"
+    }
+        
+    }
+}

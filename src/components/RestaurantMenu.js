@@ -1,41 +1,33 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import {RESTAURANT_MENU_API} from '../utils/constants.js';
+import { useState } from 'react';
 import Shimmer from './Shimmer.js';
-
+import useRestaurantMenu from '../utils/useRestaurantMenu.js';
+import RestaurantCategory from './RestaurantCategory.js';
 
 const Menu = () => {
-    const [resInfo, setResInfo] = useState(null);
     const {resId} = useParams();
     console.log("ResId",resId);
-    useEffect(()=>{
-     async function getRestaurantMenu() {
-            try {
-            const response= await fetch(`${RESTAURANT_MENU_API}/${resId}`);
-                const data = await response.json();
-                console.log(data.data.cards[2].card.card.info)
-                setResInfo(data.data.cards[2].card.card.info);
-                
-            } catch(error) {
-                console.log("Error fetching menu", error);
-            }
-        }
 
-    getRestaurantMenu();
-
-    },[resId]);
-
-    return resInfo === null?<Shimmer />: (
-        <div className="res-card">
-            <h1>{resInfo.name}</h1>
-            <div className = "menu-img-container">
-                <img src={"https://media-assets.swiggy.com/swiggy/image/upload/"+ resInfo.cloudinaryImageId} alt="pic" />
-            </div>
-            
-            
-            <div>cost: {resInfo.costForTwo}</div>
-            <div>cusisines:{resInfo.cuisines.join(",")}</div>
-
+    const [activeIndex, setActiveIndex] = useState(null);
+    
+    const resInfo = useRestaurantMenu(resId);
+    if (resInfo === null) {
+        return <Shimmer />;
+    } 
+    const {name, cuisines, costForTwoMessage} = resInfo?.cards[2]?.card?.card?.info;
+    //const { itemCards } = resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards.card.card;
+    console.log(resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards);
+    const itemCategories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(card => card?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+    console.log(
+    itemCategories.map(item => item?.card?.card)
+);
+        return (
+        <div className="text-center">
+            <h1 className="my-10 text-2xl font-bold">{name}</h1>
+            <p>{cuisines.join(",")} - {costForTwoMessage}</p>
+            {itemCategories.map((category, index) => (
+                <RestaurantCategory key = {category?.card?.card?.id} data={category?.card?.card } isActive = {activeIndex === index} onShow= {()=>activeIndex === index?setActiveIndex(null):setActiveIndex(index)}/>
+            ))}
         </div>
     )
 }
